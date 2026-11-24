@@ -1,0 +1,37 @@
+﻿condition,pair,language,text,token_count,characters,utf8_bytes,tokens_per_character,roundtrip
+english_bpe,1,ko,도서관에서 빌린 책을 친구에게 돌려주었어요.,62,24,62,2.5833333333333335,True
+english_bpe,1,en,I returned the book I borrowed from the library to my friend.,25,61,61,0.4098360655737705,True
+english_bpe,2,ko,내일 비가 오면 집에서 보고서를 쓸 거예요.,58,24,58,2.4166666666666665,True
+english_bpe,2,en,"If it rains tomorrow, I will write the report at home.",24,54,54,0.4444444444444444,True
+english_bpe,3,ko,이 문장을 나눈 토큰으로 원문을 복원할 수 있나요?,68,28,68,2.4285714285714284,True
+english_bpe,3,en,Can you reconstruct this sentence from its tokens?,23,50,50,0.46,True
+english_bpe,4,ko,처음 보는 단어도 공백과 함께 보존해야 합니다.,64,26,64,2.4615384615384617,True
+english_bpe,4,en,Even unfamiliar words must be preserved along with spaces.,26,58,58,0.4482758620689655,True
+english_bpe,5,ko,친구들이랑 같이 걸으면서 어제의 실험을 이야기했어요.,75,29,75,2.586206896551724,True
+english_bpe,5,en,I talked about yesterday's experiment while walking with my friends.,33,68,68,0.4852941176470588,True
+english_bpe,6,ko,서울역 3번 출구에서 만나요! 👋,43,18,43,2.388888888888889,True
+english_bpe,6,en,Let's meet at exit 3 of Seoul Station! 👋,29,40,43,0.725,True
+korean_bpe,1,ko,도서관에서 빌린 책을 친구에게 돌려주었어요.,31,24,62,1.2916666666666667,True
+korean_bpe,1,en,I returned the book I borrowed from the library to my friend.,61,61,61,1.0,True
+korean_bpe,2,ko,내일 비가 오면 집에서 보고서를 쓸 거예요.,28,24,58,1.1666666666666667,True
+korean_bpe,2,en,"If it rains tomorrow, I will write the report at home.",54,54,54,1.0,True
+korean_bpe,3,ko,이 문장을 나눈 토큰으로 원문을 복원할 수 있나요?,28,28,68,1.0,True
+korean_bpe,3,en,Can you reconstruct this sentence from its tokens?,50,50,50,1.0,True
+korean_bpe,4,ko,처음 보는 단어도 공백과 함께 보존해야 합니다.,30,26,64,1.1538461538461537,True
+korean_bpe,4,en,Even unfamiliar words must be preserved along with spaces.,58,58,58,1.0,True
+korean_bpe,5,ko,친구들이랑 같이 걸으면서 어제의 실험을 이야기했어요.,43,29,75,1.4827586206896552,True
+korean_bpe,5,en,I talked about yesterday's experiment while walking with my friends.,68,68,68,1.0,True
+korean_bpe,6,ko,서울역 3번 출구에서 만나요! 👋,27,18,43,1.5,True
+korean_bpe,6,en,Let's meet at exit 3 of Seoul Station! 👋,43,40,43,1.075,True
+korean_morph_bpe,1,ko,도서관에서 빌린 책을 친구에게 돌려주었어요.,29,24,62,1.2083333333333333,True
+korean_morph_bpe,1,en,I returned the book I borrowed from the library to my friend.,61,61,61,1.0,True
+korean_morph_bpe,2,ko,내일 비가 오면 집에서 보고서를 쓸 거예요.,28,24,58,1.1666666666666667,True
+korean_morph_bpe,2,en,"If it rains tomorrow, I will write the report at home.",54,54,54,1.0,True
+korean_morph_bpe,3,ko,이 문장을 나눈 토큰으로 원문을 복원할 수 있나요?,30,28,68,1.0714285714285714,True
+korean_morph_bpe,3,en,Can you reconstruct this sentence from its tokens?,50,50,50,1.0,True
+korean_morph_bpe,4,ko,처음 보는 단어도 공백과 함께 보존해야 합니다.,32,26,64,1.2307692307692308,True
+korean_morph_bpe,4,en,Even unfamiliar words must be preserved along with spaces.,58,58,58,1.0,True
+korean_morph_bpe,5,ko,친구들이랑 같이 걸으면서 어제의 실험을 이야기했어요.,37,29,75,1.2758620689655173,True
+korean_morph_bpe,5,en,I talked about yesterday's experiment while walking with my friends.,68,68,68,1.0,True
+korean_morph_bpe,6,ko,서울역 3번 출구에서 만나요! 👋,27,18,43,1.5,True
+korean_morph_bpe,6,en,Let's meet at exit 3 of Seoul Station! 👋,43,40,43,1.075,True

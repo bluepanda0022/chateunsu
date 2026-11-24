@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f9fc" />
+    <title>은수 — 한국어로, 더 자연스럽게</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <aside id="sidebar">
+      <a class="brand" href="/" aria-label="은수 홈"
+        ><span class="logo">ㅇ</span>은수<span class="beta">BETA</span></a
+      >
+      <button class="new-chat" id="newChat">
+        <span>＋</span> 새로운 대화 <kbd>⌘ K</kbd>
+      </button>
+      <div class="nav-label">워크스페이스</div>
+      <nav>
+        <button class="nav active" data-view="chat">
+          <span>◉</span> 채팅 <span class="small-tag">AI</span></button
+        ><button class="nav" data-view="tokens">
+          <span>▦</span> 토크나이저 실험실
+        </button>
+      </nav>
+      <div class="history-heading">
+        최근 대화
+        <button
+          id="clearHistory"
+          title="대화 기록 삭제"
+          aria-label="대화 기록 삭제"
+        >
+          ⌫
+        </button>
+      </div>
+      <div id="history"></div>
+      <div class="sidebar-bottom">
+        <div class="korean-card">
+          <span>가</span>
+          <div>한국어로 대화하는 은수<small>대화와 토큰을 한곳에서</small></div>
+        </div>
+        <button class="profile" id="about">
+          <span class="avatar">나</span>
+          <div>나의 워크스페이스<small>로컬 · 개인 공간</small></div>
+          <span>⌘</span>
+        </button>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div class="header-left">
+          <button id="menu" aria-label="메뉴 열기">☰</button
+          ><strong id="pageTitle">은수 채팅</strong
+          ><span class="header-divider"></span
+          ><span class="model-label">은수 · 로컬 대화와 토큰 연구</span>
+        </div>
+        <div class="header-right">
+          <span class="status-dot"></span
+          ><span id="modeLabel">로컬 AI 대화</span
+          ><button id="info" aria-label="모델 안내">ⓘ</button>
+        </div>
+      </header>
+      <section id="chatView" class="view">
+        <div id="welcome">
+          <div class="eyebrow">
+            <span></span> 당신의 생각에, 은수와 더 가까이
+          </div>
+          <div class="hero-symbol">ㅇ<span>✦</span></div>
+          <h1>이야기할수록, 더 가까워져요.</h1>
+          <p class="subtitle">
+            오늘 있었던 일부터 소소한 수다까지.<br />당신의 언어로 편하게
+            이야기해 보세요.
+          </p>
+          <div class="suggestions">
+            <button data-prompt="안녕">
+              <span class="card-icon peach">☺</span
+              ><strong>은수야, 안녕!</strong>
+              <p>가벼운 인사로 이야기를 시작해 봐요</p>
+              <span class="arrow">↗</span>
+            </button>
+            <button data-prompt="심심해">
+              <span class="card-icon violet">✧</span
+              ><strong>심심할 때 함께 수다</strong>
+              <p>오늘은 어떤 이야기를 해 볼까요?</p>
+              <span class="arrow">↗</span>
+            </button>
+            <button data-prompt="한국어 토크나이저와 토큰은 무엇인가요?">
+              <span class="card-icon mint">▤</span
+              ><strong>한국어 토큰 들여다보기</strong>
+              <p>문장을 작은 단위로 나눠 봐요</p>
+              <span class="arrow">↗</span>
+            </button>
+            <button data-prompt="어떻게 가르쳐">
+              <span class="card-icon yellow">☀</span
+              ><strong>내가 가르치는 은수</strong>
+              <p>새로운 질문과 답변을 알려 주세요</p>
+              <span class="arrow">↗</span>
+            </button>
+          </div>
+          <div class="welcome-note">
+            <span>가</span> 너의 이야기를 듣고, 다음 이야기로
+          </div>
+        </div>
+        <div id="messages" aria-live="polite"></div>
+        <div class="composer-wrap">
+          <form id="chatForm">
+            <textarea
+              id="prompt"
+              rows="1"
+              placeholder="무엇이든 편하게 물어보세요."
+              aria-label="메시지 입력"
+            ></textarea>
+            <div class="composer-bottom">
+              <button
+                type="button"
+                id="attach"
+                title="텍스트 파일 불러오기"
+                aria-label="텍스트 파일 불러오기"
+              >
+                ＋</button
+              ><span>한국어로 더 풍부하게</span><span id="charCount">0자</span
+              ><button id="send" type="submit" aria-label="메시지 보내기">
+                ↑
+              </button>
+            </div>
+          </form>
+          <input type="file" id="fileInput" accept=".txt,.md" hidden />
+          <p class="disclaimer">
+            대화는 이 컴퓨터에서 생성합니다. 은수의 한국어 분석과 실제 토큰은
+            토크나이저 실험실에서 확인하세요.
+            <span>Enter 전송 · Shift + Enter 줄바꿈</span>
+          </p>
+        </div>
+      </section>
+      <section id="tokensView" class="view hidden">
+        <div class="tool-heading">
+          <div class="eyebrow">LANGUAGE LAB</div>
+          <h1>문장 속 작은 단위, 토큰.</h1>
+          <p>은수의 한국어 분석 단위와 실제 대화에 쓰인 토큰을 확인하세요.</p>
+        </div>
+        <div class="tool-panel token-guide">
+          <strong>은수의 한국어 처리 방식</strong>
+          <p>
+            한국어 분석에서는 조사와 어미를 구분하고 원형을 찾아 사전 검색
+            후보를 고릅니다. 예를 들어 ‘먹었어요’는 먹/VV · 었/EP · 어요/EF로
+            분석합니다.
+          </p>
+          <p>
+            답변을 생성할 때는 실행 모델 Qwen3의 BPE 어휘와 토큰 ID를
+            사용합니다. ‘실제 대화’ 모드에서는 시스템 지침과 이전 대화까지
+            포함한 입력을 확인할 수 있습니다. 형태소 분석 개수와 생성 모델의
+            토큰 수는 서로 다릅니다.
+          </p>
+        </div>
+        <div class="tool-panel">
+          <div class="panel-top">
+            <strong>분석할 텍스트</strong
+            ><button id="sample">예시 불러오기 ↗</button>
+          </div>
+          <textarea id="tokenInput" placeholder="분석할 문장을 입력해 주세요.">
+안녕하세요, 은수와 함께 한국어를 탐험해요!</textarea
+          >
+          <div class="tool-actions">
+            <label for="tokenMode" class="sr-only">분석 방식</label
+            ><select id="tokenMode">
+              <option value="morpheme">
+                한국어 분석 · 조사·어미 분리 (Kiwi)
+              </option>
+              <option value="model" selected>실행 모델 BPE · 입력 본문</option>
+              <option value="inference-input">
+                실제 대화 · 전체 입력 토큰
+              </option>
+              <option value="inference-output">
+                출력 본문 · BPE 재인코딩
+              </option></select
+            ><select
+              id="tokenRound"
+              class="hidden"
+              aria-label="추론 차수"
+            ></select
+            ><span id="tokenMethod"></span
+            ><button id="analyze">토큰 분석하기 →</button>
+          </div>
+        </div>
+        <div class="stats">
+          <div>
+            <span id="tokenCountLabel">모델 토큰 수</span
+            ><strong id="tokenCount">—</strong>
+          </div>
+          <div><span>문자 수</span><strong id="tokenChars">—</strong></div>
+          <div><span>UTF-8 바이트</span><strong id="tokenBytes">—</strong></div>
+        </div>
+        <div class="tool-panel">
+          <div class="panel-top">
+            <strong>토큰 시각화</strong
+            ><button id="exportTokens">JSON 내보내기 ↓</button>
+          </div>
+          <p id="tokenScope" class="token-note">
+            입력 본문만 · 시스템 지침·대화 이력 제외
+          </p>
+          <p id="tokenVerification" class="token-note" role="status"></p>
+          <div id="tokenOutput">텍스트를 입력하고 분석을 시작해 보세요.</div>
+          <p class="token-note">
+            형태소 모드에서는 원형과 품사를, AI 모드에서는 실제 토큰 ID를
+            확인합니다. 토큰 위에 마우스를 올리면 원문과 위치를 볼 수 있어요.
+          </p>
+        </div>
+        <p class="lab-disclaimer">
+          한국어 형태소는 조사와 어미까지 분석합니다. 예: 먹었어요 → 먹/VV +
+          었/EP + 어요/EF. 원형은 원문과 다를 수 있고, 활용형은 원문 범위를
+          공유할 수 있습니다. Qwen3 BPE는 단어보다 작은 바이트 조각도 사용하며,
+          독립적으로 글자가 되지 않는 조각은 16진수 바이트로 표시합니다. 각 색상
+          상자가 토큰 1개이며, 한 글자가 여러 토큰에 걸칠 수 있습니다. ‘전체
+          입력’ 모드는 시스템 지침과 대화 이력을 포함합니다.
+        </p>
+      </section>
+      <footer>
+        <span class="footer-logo">ㅇ</span> 생각을 잇는 한국어 AI
+        <span>은수</span>
+      </footer>
+    </main>
+    <div id="toast" role="status"></div>
+    <dialog id="aboutDialog">
+      <button id="closeDialog" aria-label="닫기">×</button
+      ><span class="logo">ㅇ</span>
+      <h2>한국어로 이어지는 생각, 은수</h2>
+      <p>
+        은수는 이 컴퓨터에서 실행되는 언어 모델로 한국어 대화를 생성합니다. 일상
+        대화는 로컬에서 이어가고, 모르는 단어는 모델이 필요에 따라 국어사전
+        API에서 찾아 답합니다.
+      </p>
+      <p>
+        기본 인사와 일상 대화가 준비되어 있어요. 답변 아래의 “답변 가르치기”로
+        질문과 답변을 추가하면 다음 대화부터 사용할 수 있습니다. 최근 대화를
+        참고해 새로운 문장을 만듭니다. 모델은 잘못된 답변을 할 수 있습니다.
+        “사랑과 우정 뜻 차이 알려줘”, “예를 들어줘”, “사랑 뜻 알려줘”,
+        “우리말샘에서 바람 찾아줘”로 단어 뜻도 찾아보세요.
+      </p>
+      <p>
+        대화 기록은 이 브라우저에, 가르친 질문과 답변은 이 컴퓨터의 로컬
+        데이터베이스에 저장됩니다. 같은 서버를 쓰는 브라우저들은 배운 답변을
+        공유합니다. 대화 기록을 삭제해도 배운 답변은 남습니다. 사전 검색 시
+        검색어만 국립국어원 사전으로 전송되며, 대화 전체는 전송하지 않습니다.
+      </p>
+    </dialog>
+    <dialog id="teachDialog">
+      <form id="teachForm">
+        <h2>은수에게 알려 주세요</h2>
+        <p>이 말을 들으면 어떻게 답하면 좋을까요?</p>
+        <label for="teachQuestion">이렇게 말하면</label
+        ><textarea
+          id="teachQuestion"
+          required
+          maxlength="1000"
+          rows="2"
+        ></textarea>
+        <label for="teachAnswer">이렇게 답해 줘</label
+        ><textarea
+          id="teachAnswer"
+          required
+          maxlength="1000"
+          rows="3"
+          placeholder="은수가 해 줬으면 하는 답변을 적어 주세요."
+        ></textarea>
+        <p id="teachStatus" role="status"></p>
+        <div class="teach-actions">
+          <button type="button" id="cancelTeaching">취소</button
+          ><button type="submit" id="saveTeaching">가르치기</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="/app.js"></script>
+  </body>
+</html>
